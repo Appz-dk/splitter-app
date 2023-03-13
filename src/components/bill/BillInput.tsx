@@ -10,10 +10,11 @@ type BillInputProps = {
 const BillInput: React.FC<BillInputProps> = ({ label, type, svg, alt, formKey, onFormChange }) => {
   return (
     <div className="bill__input-container">
-      <label>{label}</label>
+      <label htmlFor={formKey}>{label}</label>
       <img src={svg} alt={alt} />
       {/* Can remove max if needed */}
       <input
+        id={formKey}
         className="bill__input"
         type={type}
         placeholder="0"

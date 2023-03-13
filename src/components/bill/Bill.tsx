@@ -1,33 +1,39 @@
 import { useState } from "react";
 import dollarSvg from "../../assets/images/icon-dollar.svg";
 import personSvg from "../../assets/images/icon-person.svg";
+import { BillForm } from "../Wrapper";
 import BillInput from "./BillInput";
 import BillTip from "./BillTip";
 
-type BillForm = {
-  bill: string;
-  tip: string;
-  people: string;
+// type BillForm = {
+//   bill: string;
+//   tip: string;
+//   people: string;
+// };
+
+// const defaultBillForm = {
+//   bill: "0",
+//   tip: "0",
+//   people: "0",
+// };
+
+type BillProps = {
+  onFormChange: (key: string, value: string) => void;
+  billForm: BillForm;
 };
 
-const defaultBillForm = {
-  bill: "0",
-  tip: "0",
-  people: "0",
-};
+const Bill: React.FC<BillProps> = ({ onFormChange, billForm }) => {
+  // const [billForm, setBillForm] = useState<BillForm>(defaultBillForm);
 
-const Bill = () => {
-  const [billForm, setBillForm] = useState<BillForm>(defaultBillForm);
+  // const onFormChange = (key: string, value: string) => {
+  //   setBillForm((prev) => ({
+  //     ...prev,
+  //     [key]: value,
+  //   }));
+  // };
 
   const onBillSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-  };
-
-  const onFormChange = (key: string, value: string) => {
-    setBillForm((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
   };
 
   return (
@@ -41,7 +47,7 @@ const Bill = () => {
           onFormChange={onFormChange}
           formKey={"bill"}
         />
-        <BillTip onTipChange={onFormChange} />
+        <BillTip onTipChange={onFormChange} billForm={billForm} />
         <BillInput
           label="Number of People"
           type="number"

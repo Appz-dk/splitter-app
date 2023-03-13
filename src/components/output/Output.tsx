@@ -1,5 +1,7 @@
+import OutputAmount from "./OutputAmount";
+
 const Output = () => {
-  return <div>Output</div>;
+  return <div className="output-container">{/* <OutputAmount /> */}</div>;
 };
 
 export default Output;

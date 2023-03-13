@@ -23,6 +23,7 @@
 
   /* Utils */
   --border-radius-small: 0.25rem;
+  --border-radius-medium: 0.75rem;
   --border-radius-large: 1.5rem;
 }
 
@@ -155,7 +156,21 @@ body {
   padding-block: 0.25rem;
 }
 
-.bill__tip-container button {
+.bill__input-btn {
+  color: var(--White);
+  background-color: var(--primary);
+  outline: none;
+  border: none;
+  border-radius: var(--border-radius-small);
+}
+
+.bill__input-btn:is(:hover, :focus),
+.bill__input-btn-active {
+  background-color: var(--hover-clr);
+  color: var(--primary);
+}
+
+/* .bill__tip-container button {
   color: var(--White);
   background-color: var(--primary);
   outline: none;
@@ -166,4 +181,14 @@ body {
 .bill__tip-container button:is(:hover, :focus) {
   background-color: var(--hover-clr);
   color: var(--primary);
+} */
+
+/* ####################### */
+/* Output styling */
+/* ####################### */
+
+.output {
+  background-color: var(--primary);
+  width: 100%;
+  border-radius: var(--border-radius-medium);
 }
