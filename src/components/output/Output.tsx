@@ -7,6 +7,7 @@ type OutputProps = {
 };
 
 const Output: React.FC<OutputProps> = ({ billOutput, billReset }) => {
+  console.log(billOutput.totalPerPerson !== 0);
   return (
     <div className="output-container">
       <OutputAmount
@@ -17,7 +18,9 @@ const Output: React.FC<OutputProps> = ({ billOutput, billReset }) => {
         outputAmount={billOutput.totalPerPerson.toFixed(2) || "0.00"}
         outputType="Total"
       />
-      <button onClick={billReset}>Reset</button>
+      <button onClick={billReset} disabled={billOutput.totalPerPerson === 0}>
+        Reset
+      </button>
     </div>
   );
 };

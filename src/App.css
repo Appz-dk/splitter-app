@@ -12,8 +12,10 @@
   --neutral-400: hsl(185, 41%, 84%);
   /* Should be 97% lightness, but I think it's too light */
   --neutral-200: hsl(189, 41%, 95%);
+
   --White: hsl(0, 0%, 100%);
   --validate-clr: hsl(354, 70%, 60%);
+  --btn-disabled-clr: hsl(183, 100%, 20%);
 
   /* Fonts */
   --font: "Space Mono", monospace;
@@ -246,6 +248,11 @@ body {
 
 .output-container button:is(:hover, :focus) {
   background-color: var(--hover-clr);
+}
+
+.output-container button:disabled {
+  cursor: not-allowed;
+  background-color: var(--btn-disabled-clr);
 }
 
 /* ####################### */
