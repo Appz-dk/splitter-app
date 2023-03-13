@@ -1,4 +1,4 @@
-# Project Title
+# Bill Splitting App
 
 Splitter App - That splits the bill with added tips between X amount of people.
 
