@@ -166,7 +166,14 @@ body {
   /* Because the input wanted to take up all the space if I did "1fr, 1fr".
      And with this solution the grid area is 100% responsive.  
   */
-  grid-template-columns: repeat(2, calc(50% - calc(var(--gap) / 2)));
+  /* grid-template-columns: repeat(2, calc(50% - calc(var(--gap) / 2))); */
+
+  /* Found the solution use minmax !! */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+#cutsom__tip {
+  width: 100%;
 }
 
 .bill__tip-container label {
@@ -291,6 +298,7 @@ body {
   }
 
   .bill__tip-container {
-    grid-template-columns: repeat(3, calc(33% - calc(var(--gap) / 2)));
+    /* grid-template-columns: repeat(3, calc(33% - calc(var(--gap) / 2))); */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
