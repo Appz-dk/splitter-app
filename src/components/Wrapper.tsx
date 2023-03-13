@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Bill from "./bill/Bill";
 import Output from "./output/Output";
 
@@ -9,22 +9,23 @@ export type BillForm = {
 };
 
 const defaultBillForm = {
-  bill: "0",
-  tip: "0",
-  people: "0",
+  bill: "",
+  tip: "",
+  people: "",
 };
 
-type BillOutput = {
-  tipPerPerson: string;
-  totalPerPerson: string;
+export type BillOutput = {
+  tipPerPerson: number;
+  totalPerPerson: number;
 };
 
 const defaultBillOutput = {
-  tipPerPerson: "0.00",
-  totalPerPerson: "0.00",
+  tipPerPerson: 0,
+  totalPerPerson: 0,
 };
 
 const Wrapper = () => {
+  const customTipRef = useRef<HTMLInputElement>(null);
   const [billForm, setBillForm] = useState<BillForm>(defaultBillForm);
   const [billOutput, setBillOutput] = useState<BillOutput>(defaultBillOutput);
 
@@ -33,16 +34,43 @@ const Wrapper = () => {
       ...prev,
       [key]: value,
     }));
+  };
 
-    if (billForm.bill !== "0" && billForm.people !== "0" && billForm.tip !== "0") {
-      console.log("calculate");
+  const billReset = () => {
+    setBillForm(defaultBillForm);
+    setBillOutput(defaultBillOutput);
+
+    // Janky reset of custom tip input (because it has to be uncontrolled)
+    if (customTipRef.current !== null) {
+      customTipRef.current.value = "";
     }
   };
 
+  useEffect(() => {
+    if (billForm.bill !== "0" && billForm.people !== "0" && billForm.tip !== "0") {
+      const bill = Number(billForm.bill);
+      const tipProcent = Number(billForm.tip);
+      const people = Number(billForm.people);
+
+      // Guard clause
+      if (bill === 0 || people === 0) return;
+
+      // tip amount divided by amount of people
+      const tipPerPerson = ((bill / 100) * tipProcent) / people;
+      const totalPerPerson = bill / people + tipPerPerson;
+
+      // Store billOutput in state
+      setBillOutput({
+        tipPerPerson,
+        totalPerPerson,
+      });
+    }
+  }, [billForm]);
+
   return (
     <main className="splitter__wrapper">
-      <Bill onFormChange={onFormChange} billForm={billForm} />
-      <Output />
+      <Bill onFormChange={onFormChange} billForm={billForm} customTipRef={customTipRef} />
+      <Output billOutput={billOutput} billReset={billReset} />
     </main>
   );
 };

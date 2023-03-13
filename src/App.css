@@ -20,11 +20,18 @@
   --fs-700: 2rem; /* May have to change this value*/
   --fs-600: 1.5rem;
   --fs-400: 1rem;
+  --fs-300: 0.85rem;
 
   /* Utils */
   --border-radius-small: 0.25rem;
   --border-radius-medium: 0.75rem;
   --border-radius-large: 1.5rem;
+}
+
+@media (min-width: 60em) {
+  :root {
+    --fs-700: 2.5rem;
+  }
 }
 
 /* Vite Root element */
@@ -69,6 +76,10 @@ body {
 /* ####################### */
 /* Bill styling */
 /* ####################### */
+
+.bill {
+  min-width: 0;
+}
 
 .bill form {
   display: flex;
@@ -170,25 +181,95 @@ body {
   color: var(--primary);
 }
 
-/* .bill__tip-container button {
-  color: var(--White);
-  background-color: var(--primary);
-  outline: none;
-  border: none;
-  border-radius: var(--border-radius-small);
-}
-
-.bill__tip-container button:is(:hover, :focus) {
-  background-color: var(--hover-clr);
-  color: var(--primary);
-} */
-
 /* ####################### */
 /* Output styling */
 /* ####################### */
 
-.output {
-  background-color: var(--primary);
+.output-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
   width: 100%;
+  padding: 1.5rem;
+  padding-top: 2.25rem;
+  background-color: var(--primary);
   border-radius: var(--border-radius-medium);
+}
+
+.output__amount-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.output__type {
+  color: white;
+  font-size: var(--fs-400);
+}
+
+.output__type :last-child {
+  color: var(--neutral-600);
+  font-size: var(--fs-300);
+}
+
+.output__amount {
+  color: var(--secondary);
+  font-size: var(--fs-700);
+}
+
+.output-container button {
+  background-color: var(--secondary);
+  color: var(--primary);
+  font-weight: 700;
+  outline: none;
+  border: none;
+  border-radius: var(--border-radius-small);
+  text-transform: uppercase;
+  padding-block: 0.5rem;
+  cursor: pointer;
+  margin-top: auto;
+}
+
+.output-container button:is(:hover, :focus) {
+  background-color: var(--hover-clr);
+}
+
+/* ####################### */
+/* Layout changes */
+/* ####################### */
+
+@media (min-width: 45em) {
+  #root {
+    padding-block: 2rem;
+    display: grid;
+    place-items: center;
+  }
+
+  .App {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .splitter__wrapper {
+    width: 50rem;
+    max-width: 90%;
+    border-radius: var(--border-radius-large);
+  }
+}
+
+@media (min-width: 60em) {
+  .App {
+    --gap: 4rem;
+  }
+
+  .splitter__wrapper {
+    --gap: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 65rem;
+  }
+
+  .bill__tip-container {
+    grid-template-columns: repeat(3, calc(33% - calc(var(--gap) / 2)));
+  }
 }

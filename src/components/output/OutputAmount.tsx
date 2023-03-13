@@ -11,7 +11,7 @@ const OutputAmount: React.FC<OutputAmountProps> = ({ outputType, outputAmount })
         <p>/ person</p>
       </div>
       <div className="output__amount">
-        <p>{outputAmount}</p>
+        <p>${outputAmount}</p>
       </div>
     </div>
   );

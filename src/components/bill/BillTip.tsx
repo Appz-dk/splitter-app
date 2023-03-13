@@ -7,9 +7,10 @@ const tipAmounts = ["5%", "10%", "15%", "25%", "50%"];
 type BillTipProps = {
   onTipChange: (key: string, tipAmount: string) => void;
   billForm: BillForm;
+  customTipRef: React.MutableRefObject<HTMLInputElement | null>;
 };
 
-const BillTip: React.FC<BillTipProps> = ({ onTipChange, billForm }) => {
+const BillTip: React.FC<BillTipProps> = ({ onTipChange, billForm, customTipRef }) => {
   return (
     <div className="bill__tip-container">
       <label>Select Tip %</label>
@@ -22,12 +23,27 @@ const BillTip: React.FC<BillTipProps> = ({ onTipChange, billForm }) => {
         />
       ))}
       <input
+        ref={customTipRef}
+        id="custom__tip"
         type="number"
         className="bill__input"
         placeholder="Custom"
         max={200}
         min={0}
         onChange={(e) => onTipChange("tip", e.target.value)}
+        // Prevents scrolling from changing the number value
+        onWheel={(e) => e.currentTarget.blur()}
+
+        // Alternative that doesn't blur on scroll (but prevents scrolling from happening when cursor is over input element)
+        // onFocus={(e) =>
+        //   e.target.addEventListener(
+        //     "wheel",
+        //     function (e) {
+        //       e.preventDefault();
+        //     },
+        //     { passive: false }
+        //   )
+        // }
       />
     </div>
   );
