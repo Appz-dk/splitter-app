@@ -36,6 +36,7 @@ const Bill: React.FC<BillProps> = ({ onFormChange, billForm, customTipRef }) => 
           onFormChange={onFormChange}
           formKey={"people"}
           value={billForm.people}
+          validate
         />
       </form>
     </div>

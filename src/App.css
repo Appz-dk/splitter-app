@@ -13,6 +13,7 @@
   /* Should be 97% lightness, but I think it's too light */
   --neutral-200: hsl(189, 41%, 95%);
   --White: hsl(0, 0%, 100%);
+  --validate-clr: hsl(354, 70%, 60%);
 
   /* Fonts */
   --font: "Space Mono", monospace;
@@ -124,6 +125,19 @@ body {
 
 .bill__input::placeholder {
   color: var(--neutral-600);
+}
+
+.bill__input-validate {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bill__input-validate span {
+  color: var(--validate-clr);
+}
+
+.bill__input-error {
+  border-color: var(--validate-clr) !important;
 }
 
 /* Removes the arrows (up & down) from bill inputs */

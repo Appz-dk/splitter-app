@@ -53,7 +53,10 @@ const Wrapper = () => {
       const people = Number(billForm.people);
 
       // Guard clause
-      if (bill === 0 || people === 0) return;
+      if (bill === 0 || people === 0) {
+        setBillOutput(defaultBillOutput);
+        return;
+      }
 
       // tip amount divided by amount of people
       const tipPerPerson = ((bill / 100) * tipProcent) / people;

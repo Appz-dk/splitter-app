@@ -6,7 +6,7 @@ type BillInputProps = {
   alt: string;
   formKey: string;
   onFormChange: (formKey: string, value: string) => void;
-  min?: number;
+  validate?: boolean;
 };
 
 const BillInput: React.FC<BillInputProps> = ({
@@ -17,16 +17,21 @@ const BillInput: React.FC<BillInputProps> = ({
   alt,
   formKey,
   onFormChange,
+  validate = false,
 }) => {
+  const inputError = validate && value === "0";
+
   return (
     <div className="bill__input-container">
-      <label htmlFor={formKey}>{label}</label>
+      <div className="bill__input-validate">
+        <label htmlFor={formKey}>{label}</label>
+        {inputError && <span>Can't be zero</span>}
+      </div>
       <img src={svg} alt={alt} />
-      {/* Can remove max if needed */}
       <input
         id={formKey}
         value={value}
-        className="bill__input"
+        className={inputError ? "bill__input bill__input-error" : "bill__input"}
         type={type}
         placeholder="0"
         min={0}
