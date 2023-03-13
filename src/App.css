@@ -1,0 +1,95 @@
+/* CSS Variables */
+:root {
+  /* Colors */
+  --background-clr: hsl(185, 41%, 84%);
+  --hover-clr: hsl(172, 67%, 70%);
+
+  --primary: hsl(183, 100%, 15%);
+  --secondary: hsl(172, 67%, 45%);
+
+  --neutral-700: hsl(186, 14%, 43%);
+  --neutral-600: hsl(184, 14%, 56%);
+  --neutral-400: hsl(185, 41%, 84%);
+  --neutral-200: hsl(189, 41%, 97%);
+  --White: hsl(0, 0%, 100%);
+
+  /* Fonts */
+  --font: "Space Mono", monospace;
+
+  --fs-700: 2rem; /* May have to change this value*/
+  --fs-600: 1.5rem;
+  --fs-400: 1rem;
+
+  /* Utils */
+  --border-radius-small: 0.5rem;
+}
+
+/* Vite Root element */
+#root {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+/* Body */
+body {
+  background-color: var(--background-clr);
+  font-family: var(--font);
+  font-weight: 700;
+}
+
+/* ####################### */
+/* Wrapper components */
+/* ####################### */
+.App {
+  --gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.splitter__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo__container {
+  display: grid;
+  place-items: center;
+}
+
+/* ####################### */
+/* Bill styling */
+/* ####################### */
+.bill form {
+  display: flex;
+  flex-direction: column;
+}
+
+.bill__input {
+  position: relative;
+  text-align: right;
+  padding-inline: 0.5rem;
+  font-size: var(--fs-600);
+  border-radius: var(--border-radius-small);
+  outline: none;
+  border: none;
+  color: var(--primary);
+}
+
+.bill__input-svg {
+  position: absolute;
+}
+
+/* Removes the arrows (up & down) from bill inputs */
+/* Chrome, Safari, Edge, Opera */
+.bill__input::-webkit-outer-spin-button,
+.bill__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+.bill__input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
