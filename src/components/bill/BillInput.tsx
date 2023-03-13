@@ -1,15 +1,17 @@
 type BillInputProps = {
+  label: string;
   type: string;
   svg: string;
   alt: string;
 };
 
-const BillInput: React.FC<BillInputProps> = ({ type, svg, alt }) => {
+const BillInput: React.FC<BillInputProps> = ({ label, type, svg, alt }) => {
   return (
-    <>
-      <img className="bill__input-svg" src={svg} alt={alt} />
+    <div className="bill__input-container">
+      <label>{label}</label>
+      <img src={svg} alt={alt} />
       <input className="bill__input" type={type} placeholder="0" />
-    </>
+    </div>
   );
 };
 
