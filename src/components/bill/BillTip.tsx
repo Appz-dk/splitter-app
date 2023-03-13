@@ -4,7 +4,7 @@ import BillTipBox from "./BillTipBox";
 const tipAmounts = ["5%", "10%", "15%", "25%", "50%"];
 
 type BillTipProps = {
-  onTipChange: (tipAmount: string) => void;
+  onTipChange: (key: string, tipAmount: string) => void;
 };
 
 const BillTip: React.FC<BillTipProps> = ({ onTipChange }) => {
@@ -20,7 +20,7 @@ const BillTip: React.FC<BillTipProps> = ({ onTipChange }) => {
         placeholder="Custom"
         max={200}
         min={0}
-        onChange={(e) => onTipChange(e.target.value)}
+        onChange={(e) => onTipChange("tip", e.target.value)}
       />
     </div>
   );

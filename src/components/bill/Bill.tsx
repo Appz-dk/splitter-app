@@ -4,31 +4,51 @@ import personSvg from "../../assets/images/icon-person.svg";
 import BillInput from "./BillInput";
 import BillTip from "./BillTip";
 
+type BillForm = {
+  bill: string;
+  tip: string;
+  people: string;
+};
+
+const defaultBillForm = {
+  bill: "0",
+  tip: "0",
+  people: "0",
+};
+
 const Bill = () => {
-  const [bill, setBill] = useState("0");
-  const [tip, setTip] = useState("0");
-  const [people, setPeople] = useState("0");
+  const [billForm, setBillForm] = useState<BillForm>(defaultBillForm);
 
   const onBillSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
 
-  const onTipChange = (tipAmount: string) => {
-    console.log(tipAmount);
-    console.log(typeof tipAmount);
-    setTip(tipAmount);
+  const onFormChange = (key: string, value: string) => {
+    setBillForm((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
   };
 
   return (
     <div className="bill">
       <form onSubmit={onBillSubmit}>
-        <BillInput label="Bill" type="number" svg={dollarSvg} alt="$" />
-        <BillTip onTipChange={onTipChange} />
+        <BillInput
+          label="Bill"
+          type="number"
+          svg={dollarSvg}
+          alt="$"
+          onFormChange={onFormChange}
+          formKey={"bill"}
+        />
+        <BillTip onTipChange={onFormChange} />
         <BillInput
           label="Number of People"
           type="number"
           svg={personSvg}
           alt="Icon of a person's shape"
+          onFormChange={onFormChange}
+          formKey={"people"}
         />
       </form>
     </div>
