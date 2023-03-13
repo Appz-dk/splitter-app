@@ -7,7 +7,6 @@ type OutputProps = {
 };
 
 const Output: React.FC<OutputProps> = ({ billOutput, billReset }) => {
-  console.log(billOutput.totalPerPerson !== 0);
   return (
     <div className="output-container">
       <OutputAmount
