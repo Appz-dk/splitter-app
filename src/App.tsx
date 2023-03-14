@@ -4,10 +4,10 @@ import Wrapper from "./components/Wrapper";
 
 function App() {
   return (
-    <div className="App">
+    <main className="App">
       <Logo />
       <Wrapper />
-    </div>
+    </main>
   );
 }
 

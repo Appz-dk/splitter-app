@@ -12,16 +12,20 @@ type BillTipProps = {
 
 const BillTip: React.FC<BillTipProps> = ({ onTipChange, billForm, customTipRef }) => {
   return (
-    <div className="bill__tip-container">
+    <fieldset className="bill__tip-container">
       <label>Select Tip %</label>
       {tipAmounts.map((tip) => (
         <BillTipBox
           key={tip}
+          label={tip}
           tipAmount={tip}
           onTipChange={onTipChange}
           isActive={billForm.tip === tip.slice(0, -1)}
         />
       ))}
+      <label htmlFor="custom__tip" className="visually-hidden">
+        Custom tip amount
+      </label>
       <input
         ref={customTipRef}
         id="custom__tip"
@@ -45,7 +49,7 @@ const BillTip: React.FC<BillTipProps> = ({ onTipChange, billForm, customTipRef }
         //   )
         // }
       />
-    </div>
+    </fieldset>
   );
 };
 

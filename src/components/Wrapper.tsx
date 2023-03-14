@@ -71,10 +71,10 @@ const Wrapper = () => {
   }, [billForm]);
 
   return (
-    <main className="splitter__wrapper">
+    <section className="splitter__wrapper">
       <Bill onFormChange={onFormChange} billForm={billForm} customTipRef={customTipRef} />
       <Output billOutput={billOutput} billReset={billReset} />
-    </main>
+    </section>
   );
 };
 
