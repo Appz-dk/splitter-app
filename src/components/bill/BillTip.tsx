@@ -13,7 +13,7 @@ type BillTipProps = {
 const BillTip: React.FC<BillTipProps> = ({ onTipChange, billForm, customTipRef }) => {
   return (
     <fieldset className="bill__tip-container">
-      <label>Select Tip %</label>
+      <legend>Select Tip %</legend>
       {tipAmounts.map((tip) => (
         <BillTipBox
           key={tip}

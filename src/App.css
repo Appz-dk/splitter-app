@@ -196,9 +196,13 @@ body {
   width: 100%;
 }
 
-.bill__tip-container label {
-  grid-column: 1 / -1;
+.bill__tip-container legend {
+  /* Has to be used when element is a legend */
+  margin-bottom: 0.5rem;
+
+  /* Was used when element was a label */
   color: var(--neutral-700);
+  /* grid-column: 1 / -1; */
 }
 
 .bill__tip-container button,
